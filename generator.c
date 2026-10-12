@@ -1,7 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-bool check(unsigned long long int gend){
+bool recursive_check(unsigned long long int gend){
     int last = gend % 10;
     if (!(last == 1 || last == 0)) {
         return false;
@@ -9,18 +9,32 @@ bool check(unsigned long long int gend){
     if(last == gend){
         return true;
     }
-    return check(gend / 10);
+    return recursive_check(gend / 10);
+}
+
+bool iterative_check(unsigned long long int gend){
+    int last;
+    do {
+        last = gend % 10;
+        if (!(last == 1 || last == 0)) {
+            return false;
+        }
+        gend = gend / 10;
+    }while (last != gend);
+
+    return true;
 }
 
 int main(void){
-    unsigned long long int seed = 498;
+    unsigned long long int seed = 7;
     unsigned long long int multiplier = 1;
     unsigned long long int gend = 0;
 
     do {
         gend = seed * multiplier;
         multiplier++;
-    }while (!check(gend));
+    }while (!iterative_check(gend));
 
     printf("%lld\n", gend);
+    return 0;
 }
