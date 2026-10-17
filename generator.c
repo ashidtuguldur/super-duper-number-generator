@@ -37,5 +37,6 @@ int main(void){
 
     printf("%lld\n", gend);
     printf("%lld\n", --multiplier);
+
     return 0;
 }
