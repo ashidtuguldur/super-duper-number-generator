@@ -26,7 +26,7 @@ bool iterative_check(unsigned long long int gend){
 }
 
 int main(void){
-    unsigned long long int seed = 7;
+    unsigned long long int seed = 415;
     unsigned long long int multiplier = 1;
     unsigned long long int gend = 0;
 
@@ -36,5 +36,6 @@ int main(void){
     }while (!iterative_check(gend));
 
     printf("%lld\n", gend);
+    printf("%lld\n", --multiplier);
     return 0;
 }
